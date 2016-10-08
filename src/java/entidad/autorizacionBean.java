@@ -9,7 +9,7 @@ package entidad;
  *
  * @author alumno
  */
-public class autorizacion {
+public class autorizacionBean {
     private String practica;
     private Integer cantidad;
     private String estado;

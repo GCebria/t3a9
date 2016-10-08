@@ -6,12 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<jsp:useBean id="autorizacion" scope="request" class="entidad.autorizacionBean" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Respuesta de solicitud</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <b>Información relativa a la práctica</b>:
+        <br><b>Nombre</b>: <jsp:getProperty name="autorizacion" property="nombrePractica" />
+        <br><b>Cantidad</b>: <jsp:getProperty name="autorizacion" property="cantidad" />
+        <br><b>Estado</b>: <jsp:getProperty name="autorizacion" property="estado" />
     </body>
 </html>
