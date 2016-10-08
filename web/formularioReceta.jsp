@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <jsp:useBean id="autorizacion" scope="request" class="entidad.autorizacionBean" />
 <html>
@@ -14,27 +15,33 @@
     </head>
     <body>
         <% if (request.getParameter("nombrePractica") == null
-                    || request.getParameter("cantidad") == null
-                    || request.getParameter("estado") == null){ %>
-        <form method="POST" action="formularioRecetas.jsp">
+                    || request.getParameter("cantidad") == null) { %>
+        <form method="POST" action="formularioReceta.jsp">
             <h1>Formulario de autorización de practicas médicas</h1> <br>
             Practica : <input type="text" name="nombrePractica" value="" size="26" /><br>
             Cantidad : <input type="text" name="cantidad" value="" size="26" /><br>
-            Estado : <input type="text" name="estado" value="" size="26" /><br>
+
             <input type="submit" value="Enviar">
         </form>
-        <%}else{ %>
-             <%String nPractica, cant, estad; %>
-             <% 
-             nPractica= request.getParameter("nombrePractica"); 
-             cant = request.getParameter("cantidad");
-             estad = request.getParameter("estado");
-             %>
-             <jsp:setProperty name="autorizacion" property="nombrePractica" value="<%=nPractica%>" />
-             
-             <jsp:setProperty name="autorizacion" property="cantidad" value="<%=cant%>" />
-             <jsp:setProperty name="autorizacion" property="estado" value="<%=estad%>" />
-             <jsp:forward page="respuesta.jsp" />
-             <% } %>
+        <%} else {
+            String practica, estado;
+            Integer cantidad;
+            Boolean autorizacion;
+            Random rd = new Random();
+            autorizacion = rd.nextBoolean();
+            if (autorizacion == true) {%>
+        <jsp:setProperty name="autorizacion" property="estado" value="Aceptada" />
+        <%} else {%>
+        <jsp:setProperty name="autorizacion" property="estado" value="Rechazada" />
+        <%} 
+        practica = request.getParameter("nombrePractica");
+        cantidad = Integer.parseInt(request.getParameter("cantidad"));
+
+       %>
+        <jsp:setProperty name="autorizacion" property="practica" value="<%=practica%>" />
+        <jsp:setProperty name="autorizacion" property="cantidad" value="<%=cantidad%>" />
+
+        <jsp:forward page="respuesta.jsp"></jsp:forward>
+        <% }%>
     </body>
 </html>

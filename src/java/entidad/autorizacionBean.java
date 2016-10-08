@@ -9,6 +9,8 @@ package entidad;
  *
  * @author alumno
  */
+import java.util.*;
+
 public class autorizacionBean {
     private String practica;
     private Integer cantidad;
@@ -85,4 +87,6 @@ public class autorizacionBean {
     public void setMotivo(String motivo) {
         this.motivo = motivo;
     }
+    
+
 }

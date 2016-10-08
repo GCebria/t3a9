@@ -14,7 +14,7 @@
     </head>
     <body>
         <b>Información relativa a la práctica</b>:
-        <br><b>Nombre</b>: <jsp:getProperty name="autorizacion" property="nombrePractica" />
+        <br><b>Nombre</b>: <jsp:getProperty name="autorizacion" property="practica" />
         <br><b>Cantidad</b>: <jsp:getProperty name="autorizacion" property="cantidad" />
         <br><b>Estado</b>: <jsp:getProperty name="autorizacion" property="estado" />
     </body>
