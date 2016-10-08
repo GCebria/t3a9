@@ -24,23 +24,39 @@
             <input type="submit" value="Enviar">
         </form>
         <%} else {
-            String practica, estado;
+            String practica, estado, motivo = "error";
             Integer cantidad;
-            Boolean autorizacion;
+            Boolean aceptacion;
             Random rd = new Random();
-            autorizacion = rd.nextBoolean();
-            if (autorizacion == true) {%>
-        <jsp:setProperty name="autorizacion" property="estado" value="Aceptada" />
-        <%} else {%>
-        <jsp:setProperty name="autorizacion" property="estado" value="Rechazada" />
-        <%} 
-        practica = request.getParameter("nombrePractica");
-        cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            aceptacion = rd.nextBoolean();
+            if (aceptacion == true) {
+                estado = "Aceptada";
+            } else {
+                estado = "Rechazada";
 
-       %>
+                switch (rd.nextInt(3) + 1) {
+                    case 1:
+                        motivo = "motivo 1";
+                        break;
+                    case 2:
+                        motivo = "motivo 2";
+                        break;
+                    case 3:
+                        motivo = "motivo 3";
+                        break;
+                    case 4:
+                        motivo = "motivo 4";
+                        break;
+                }
+
+            }
+            practica = request.getParameter("nombrePractica");
+            cantidad = Integer.parseInt(request.getParameter("cantidad"));
+        %>
         <jsp:setProperty name="autorizacion" property="practica" value="<%=practica%>" />
-        <jsp:setProperty name="autorizacion" property="cantidad" value="<%=cantidad%>" />
-
+        <jsp:setProperty name="autorizacion" property="cantidad" value="<%=cantidad%>" /> 
+        <jsp:setProperty name="autorizacion" property="estado" value="<%=estado%>" />
+        <jsp:setProperty name="autorizacion" property="motivo" value="<%=motivo%>" />
         <jsp:forward page="respuesta.jsp"></jsp:forward>
         <% }%>
     </body>

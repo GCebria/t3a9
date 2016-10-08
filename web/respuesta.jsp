@@ -17,5 +17,6 @@
         <br><b>Nombre</b>: <jsp:getProperty name="autorizacion" property="practica" />
         <br><b>Cantidad</b>: <jsp:getProperty name="autorizacion" property="cantidad" />
         <br><b>Estado</b>: <jsp:getProperty name="autorizacion" property="estado" />
+        <br><b>Motivo</b>: <jsp:getProperty name="autorizacion" property="motivo" />
     </body>
 </html>
